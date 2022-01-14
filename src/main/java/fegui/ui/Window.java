@@ -1,4 +1,6 @@
 package fegui.ui;
 
-public abstract class Window {
+import fegui.ListenerHandler;
+
+public abstract class Window extends ListenerHandler {
 }

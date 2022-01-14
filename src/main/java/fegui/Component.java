@@ -1,4 +1,4 @@
 package fegui;
 
-public abstract class Component implements ComponentBase {
+public abstract class Component extends ListenerHandler implements ComponentBase {
 }
