@@ -30,13 +30,14 @@ public abstract class ListenerHandler {
     public void postEvent(Event event) {
         listeners.values().forEach(listener ->
                 Arrays.stream(listener.getClass().getDeclaredMethods())
-                .filter(method -> method.getAnnotation(EventHandler.class) != null)
-                .forEach(method -> {
-                    try {
-                        method.invoke(event);
-                    } catch (IllegalAccessException | InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                }));
+                        .filter(method -> method.getAnnotation(EventHandler.class) != null)
+                        .filter(method -> method.getParameterTypes()[0].getName().equals(event.getClass().getName()))
+                        .forEach(method -> {
+                            try {
+                                method.invoke(event);
+                            } catch (IllegalAccessException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        }));
     }
 }
