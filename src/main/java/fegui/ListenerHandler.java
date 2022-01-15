@@ -12,7 +12,7 @@ public abstract class ListenerHandler {
     private final HashMap<String, Listener> listeners = new HashMap<>();
 
     public void addListener(Listener listener) {
-        addListener(listener, UUID.randomUUID().toString());
+        addListener(listener, UUID.randomUUID().toString().substring(0, 8));
     }
 
     public void addListener(Listener listener, String name) {
